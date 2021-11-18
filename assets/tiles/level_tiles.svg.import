@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square.png-731969bc97fe7edf62e045536bfbf3be.stex"
+path="res://.import/level_tiles.svg-5de9a28b15fd6900d2937ce67425b103.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Square.png"
-dest_files=[ "res://.import/Square.png-731969bc97fe7edf62e045536bfbf3be.stex" ]
+source_file="res://assets/tiles/level_tiles.svg"
+dest_files=[ "res://.import/level_tiles.svg-5de9a28b15fd6900d2937ce67425b103.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
