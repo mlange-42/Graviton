@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/Square.png" type="Texture" id=1]
+[ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.5, 0.5 )
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 4, 4 )
+
+[node name="Floor" type="Area2D" parent="."]
+position = Vector2( 0, 300 )
+scale = Vector2( 1000, 100 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+texture = ExtResource( 1 )
