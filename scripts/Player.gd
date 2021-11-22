@@ -60,6 +60,7 @@ func _physics_process(delta):
 	update()
 
 func check_rotation():
+	# Do not apply physics and input during corner moves
 	if not self.is_on_floor():
 		return
 	
