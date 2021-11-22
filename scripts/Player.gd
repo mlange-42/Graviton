@@ -13,6 +13,8 @@ onready var ray_left: RayCast2D = $RayLeft
 onready var ray_right: RayCast2D = $RayRight
 onready var ray_down: RayCast2D = $RayDown
 
+onready var tween: Tween = $Tween
+
 var velocity = Vector2.ZERO
 
 func get_input():
@@ -39,6 +41,9 @@ func _process(delta):
 		sprite.frame = 1
 
 func _physics_process(delta):
+	if tween.is_active():
+		return
+		
 	get_input()
 	
 	velocity.y += gravity * delta
@@ -72,7 +77,9 @@ func check_rotation():
 	if ray != null:
 		ray.force_raycast_update()
 		if ray.is_colliding():
-			self.rotate(PI * 0.5 * dir)
+			tween.interpolate_property(self, "rotation", self.rotation, self.rotation + PI * 0.5 * dir, 0.1)
+			tween.start()
+			# self.rotate(PI * 0.5 * dir)
 			return
 	
 	# Convex corners
@@ -82,11 +89,18 @@ func check_rotation():
 		return
 	
 	var angle = PI * 0.5 * sign(velocity.x)
+	var center = self.position + Vector2(0, 25).rotated(self.rotation)
 	
-	var center = self.position + Vector2(0, 35).rotated(self.rotation)
+	tween.interpolate_property(self, "rotation", self.rotation, self.rotation + angle, 0.1)
+	tween.interpolate_property(self, "position", self.position, center + (self.position - center).rotated(angle), 0.1)
+	tween.start()
+	
+	#self.rotate_around_foot(angle)
+	
+func rotate_around_foot(angle):
+	var center = self.position + Vector2(0, 25).rotated(self.rotation)
 	self.position = center + (self.position - center).rotated(angle)
 	self.rotate(angle)
-	
 
 func _draw():
 	draw_line(Vector2.ZERO, Vector2.UP * 50, Color.red)

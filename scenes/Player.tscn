@@ -10,19 +10,21 @@ extents = Vector2( 12.0208, 23.7098 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
 texture = ExtResource( 1 )
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.233059, 7.91518 )
 shape = SubResource( 1 )
 
 [node name="RayLeft" type="RayCast2D" parent="."]
-cast_to = Vector2( -25, 0 )
+cast_to = Vector2( -30, 0 )
 
 [node name="RayRight" type="RayCast2D" parent="."]
-cast_to = Vector2( 25, 0 )
+cast_to = Vector2( 30, 0 )
 
 [node name="RayDown" type="RayCast2D" parent="."]
-position = Vector2( 0, 20 )
+position = Vector2( 0, 15 )
 cast_to = Vector2( 0, 20 )
+
+[node name="Tween" type="Tween" parent="."]
