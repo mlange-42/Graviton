@@ -16,3 +16,13 @@ hframes = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.233059, 7.91518 )
 shape = SubResource( 1 )
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+cast_to = Vector2( -25, 0 )
+
+[node name="RayRight" type="RayCast2D" parent="."]
+cast_to = Vector2( 25, 0 )
+
+[node name="RayDown" type="RayCast2D" parent="."]
+position = Vector2( 0, 20 )
+cast_to = Vector2( 0, 20 )
