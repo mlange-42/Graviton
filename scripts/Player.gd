@@ -8,6 +8,8 @@ export (float, 0, 1.0) var friction = 0.25
 export (float, 0, 1.0) var acceleration = 0.35
 export (float, 0, 1.0) var air_factor = 0.2
 
+var min_speed = 1
+
 export (bool) var debug_draw = false
 
 onready var sprite: Sprite = $Sprite
@@ -36,10 +38,11 @@ func get_input():
 		velocity.x = lerp(velocity.x, 0, fac * friction)
 
 func _process(_delta):
-	if self.is_on_floor():
-		sprite.frame = 0
-	else:
-		sprite.frame = 1
+	if debug_draw:
+		if self.is_on_floor():
+			sprite.frame = 0
+		else:
+			sprite.frame = 1
 
 func _physics_process(delta):
 	if tween.is_active():
@@ -57,7 +60,7 @@ func _physics_process(delta):
 			self.die()
 			return
 	
-	if abs(velocity.x) < 1:
+	if abs(velocity.x) < min_speed:
 		velocity.x = 0
 	
 	if Input.is_action_just_pressed("jump"):
@@ -79,10 +82,10 @@ func check_rotation():
 	
 	var ray: RayCast2D = null
 	var dir: int = 0
-	if velocity.x < 0:
+	if velocity.x < -min_speed:
 		ray = ray_left
 		dir = 1
-	elif velocity.x > 0:
+	elif velocity.x > min_speed:
 		ray = ray_right
 		dir = -1
 	
@@ -106,9 +109,9 @@ func check_rotation():
 	
 	ray_down_left.force_raycast_update()
 	ray_down_right.force_raycast_update()
-	if velocity.x > 0 and ray_down_right.is_colliding():
+	if velocity.x > -min_speed and ray_down_right.is_colliding():
 		return
-	if velocity.x < 0 and ray_down_left.is_colliding():
+	if velocity.x < min_speed and ray_down_left.is_colliding():
 		return
 	
 	var angle = PI * 0.5 * sign(velocity.x)

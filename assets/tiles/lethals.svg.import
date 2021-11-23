@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/objects.svg-6f33b167d8f8dfa342aff5f8a7f42ee0.stex"
+path="res://.import/lethals.svg-ad35fd737b3516b792dc9841c382117a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/objects.svg"
-dest_files=[ "res://.import/objects.svg-6f33b167d8f8dfa342aff5f8a7f42ee0.stex" ]
+source_file="res://assets/tiles/lethals.svg"
+dest_files=[ "res://.import/lethals.svg-ad35fd737b3516b792dc9841c382117a.stex" ]
 
 [params]
 

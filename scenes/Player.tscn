@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12.0208, 23.7098 )
+extents = Vector2( 12, 24 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -28,11 +28,11 @@ position = Vector2( 0, 15 )
 cast_to = Vector2( 0, 20 )
 
 [node name="RayDownLeft" type="RayCast2D" parent="."]
-position = Vector2( -8, 15 )
+position = Vector2( -12, 15 )
 cast_to = Vector2( 0, 20 )
 
 [node name="RayDownRight" type="RayCast2D" parent="."]
-position = Vector2( 8, 15 )
+position = Vector2( 12, 15 )
 cast_to = Vector2( 0, 20 )
 
 [node name="Tween" type="Tween" parent="."]
