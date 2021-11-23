@@ -8,6 +8,8 @@ export (float, 0, 1.0) var friction = 0.25
 export (float, 0, 1.0) var acceleration = 0.35
 export (float, 0, 1.0) var air_factor = 0.2
 
+export (bool) var debug_draw = false
+
 onready var sprite: Sprite = $Sprite
 onready var ray_left: RayCast2D = $RayLeft
 onready var ray_right: RayCast2D = $RayRight
@@ -49,6 +51,12 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity.rotated(self.rotation), Vector2.UP.rotated(self.rotation))
 	velocity = velocity.rotated(-self.rotation)
 	
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		if collision.collider.name == "Lethals":
+			self.die()
+			return
+	
 	if abs(velocity.x) < 1:
 		velocity.x = 0
 	
@@ -58,8 +66,9 @@ func _physics_process(delta):
 	
 	if not Input.is_action_pressed("dont_stick"):
 		check_rotation()
-		
-	update()
+	
+	if debug_draw:
+		update()
 
 func check_rotation():
 	# Do not apply physics and input during corner moves
@@ -80,6 +89,9 @@ func check_rotation():
 	if ray != null:
 		ray.force_raycast_update()
 		if ray.is_colliding():
+			if ray.get_collider().name == "Lethals":
+				self.die()
+			
 			# warning-ignore:return_value_discarded
 			tween.interpolate_property(self, "rotation", self.rotation, self.rotation + PI * 0.5 * dir, 0.1)
 			# warning-ignore:return_value_discarded
@@ -108,7 +120,9 @@ func check_rotation():
 	tween.interpolate_property(self, "position", self.position, center + (self.position - center).rotated(angle), 0.1)
 	# warning-ignore:return_value_discarded
 	tween.start()
-	
+
+func die():
+	get_tree().change_scene(get_tree().current_scene.filename)
 	
 func rotate_around_foot(angle):
 	var center = self.position + Vector2(0, 25).rotated(self.rotation)
@@ -116,6 +130,14 @@ func rotate_around_foot(angle):
 	self.rotate(angle)
 
 func _draw():
-	draw_line(Vector2.ZERO, Vector2.UP * 50, Color.red)
-	draw_line(Vector2.ZERO, velocity * 0.2, Color.green)
+	if debug_draw:
+		draw_line(Vector2.ZERO, Vector2.UP * 50, Color.red)
+		draw_line(Vector2.ZERO, velocity * 0.2, Color.green)
+		
+		draw_line(ray_left.position, ray_left.position + ray_left.cast_to, Color.blue)
+		draw_line(ray_right.position, ray_right.position + ray_right.cast_to, Color.blue)
+		
+		draw_line(ray_down.position, ray_down.position + ray_down.cast_to, Color.blue)
+		draw_line(ray_down_left.position, ray_down_left.position + ray_down_left.cast_to, Color.blue)
+		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
 	

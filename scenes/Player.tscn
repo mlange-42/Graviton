@@ -18,10 +18,10 @@ hframes = 2
 shape = SubResource( 1 )
 
 [node name="RayLeft" type="RayCast2D" parent="."]
-cast_to = Vector2( -30, 0 )
+cast_to = Vector2( -25, 0 )
 
 [node name="RayRight" type="RayCast2D" parent="."]
-cast_to = Vector2( 30, 0 )
+cast_to = Vector2( 25, 0 )
 
 [node name="RayDown" type="RayCast2D" parent="."]
 position = Vector2( 0, 15 )
