@@ -27,4 +27,12 @@ cast_to = Vector2( 30, 0 )
 position = Vector2( 0, 15 )
 cast_to = Vector2( 0, 20 )
 
+[node name="RayDownLeft" type="RayCast2D" parent="."]
+position = Vector2( -8, 15 )
+cast_to = Vector2( 0, 20 )
+
+[node name="RayDownRight" type="RayCast2D" parent="."]
+position = Vector2( 8, 15 )
+cast_to = Vector2( 0, 20 )
+
 [node name="Tween" type="Tween" parent="."]

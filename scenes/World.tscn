@@ -1,9 +1,10 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://assets/tiles/floor.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tiles/background.png" type="Texture" id=3]
 [ext_resource path="res://scripts/CameraController.gd" type="Script" id=4]
+[ext_resource path="res://shaders/blur.shader" type="Shader" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=61]
 polygon = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -609,6 +610,10 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 2/shapes = [  ]
 2/z_index = 0
 
+[sub_resource type="ShaderMaterial" id=97]
+shader = ExtResource( 5 )
+shader_param/blur_amount = 0.0
+
 [node name="World" type="Node2D"]
 
 [node name="Floor TileMap" type="TileMap" parent="."]
@@ -622,6 +627,16 @@ rotating = true
 current = true
 script = ExtResource( 4 )
 target_path = NodePath("../Player")
+
+[node name="Blur" type="ColorRect" parent="Camera2D"]
+material = SubResource( 97 )
+margin_left = -1296.0
+margin_top = -900.0
+margin_right = 1304.0
+margin_bottom = 900.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 32, -32 )

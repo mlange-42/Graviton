@@ -12,6 +12,8 @@ onready var sprite: Sprite = $Sprite
 onready var ray_left: RayCast2D = $RayLeft
 onready var ray_right: RayCast2D = $RayRight
 onready var ray_down: RayCast2D = $RayDown
+onready var ray_down_left: RayCast2D = $RayDownLeft
+onready var ray_down_right: RayCast2D = $RayDownRight
 
 onready var tween: Tween = $Tween
 
@@ -30,9 +32,6 @@ func get_input():
 		velocity.x = lerp(velocity.x, dir * speed, fac * acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0, fac * friction)
-	
-	if not Input.is_action_pressed("dont_stick"):
-		check_rotation()
 
 func _process(_delta):
 	if self.is_on_floor():
@@ -57,6 +56,9 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y = jump_speed
 	
+	if not Input.is_action_pressed("dont_stick"):
+		check_rotation()
+		
 	update()
 
 func check_rotation():
@@ -88,6 +90,13 @@ func check_rotation():
 	
 	ray_down.force_raycast_update()
 	if ray_down.is_colliding():
+		return
+	
+	ray_down_left.force_raycast_update()
+	ray_down_right.force_raycast_update()
+	if velocity.x > 0 and ray_down_right.is_colliding():
+		return
+	if velocity.x < 0 and ray_down_left.is_colliding():
 		return
 	
 	var angle = PI * 0.5 * sign(velocity.x)
