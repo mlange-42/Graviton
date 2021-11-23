@@ -34,7 +34,7 @@ func get_input():
 	if not Input.is_action_pressed("dont_stick"):
 		check_rotation()
 
-func _process(delta):
+func _process(_delta):
 	if self.is_on_floor():
 		sprite.frame = 0
 	else:
@@ -78,9 +78,10 @@ func check_rotation():
 	if ray != null:
 		ray.force_raycast_update()
 		if ray.is_colliding():
+			# warning-ignore:return_value_discarded
 			tween.interpolate_property(self, "rotation", self.rotation, self.rotation + PI * 0.5 * dir, 0.1)
+			# warning-ignore:return_value_discarded
 			tween.start()
-			# self.rotate(PI * 0.5 * dir)
 			return
 	
 	# Convex corners
@@ -92,11 +93,13 @@ func check_rotation():
 	var angle = PI * 0.5 * sign(velocity.x)
 	var center = self.position + Vector2(0, 25).rotated(self.rotation)
 	
+	# warning-ignore:return_value_discarded
 	tween.interpolate_property(self, "rotation", self.rotation, self.rotation + angle, 0.1)
+	# warning-ignore:return_value_discarded
 	tween.interpolate_property(self, "position", self.position, center + (self.position - center).rotated(angle), 0.1)
+	# warning-ignore:return_value_discarded
 	tween.start()
 	
-	#self.rotate_around_foot(angle)
 	
 func rotate_around_foot(angle):
 	var center = self.position + Vector2(0, 25).rotated(self.rotation)
