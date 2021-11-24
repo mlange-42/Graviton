@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_original.png-b89c32ad035cd96a518a39889bbec7b7.stex"
+path="res://.import/autotile_template_3x3.svg-f74860bfe766cc68337c2990eb57af34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/floor_original.png"
-dest_files=[ "res://.import/floor_original.png-b89c32ad035cd96a518a39889bbec7b7.stex" ]
+source_file="res://assets/tiles/autotile_template_3x3.svg"
+dest_files=[ "res://.import/autotile_template_3x3.svg-f74860bfe766cc68337c2990eb57af34.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=1.0
+svg/scale=4.0
