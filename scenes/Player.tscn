@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/textures/player.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/player/player_animations.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -9,10 +9,12 @@ extents = Vector2( 12, 24 )
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
-texture = ExtResource( 1 )
-hframes = 2
+scale = Vector2( 0.25, 0.25 )
+frames = ExtResource( 1 )
+animation = "stand_right"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
