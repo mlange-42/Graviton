@@ -7,12 +7,12 @@ onready var blur: ColorRect = $Blur
 var target: Node2D
 var blur_amount = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	target = get_node(target_path)
 
 func _process(delta):
-	position = lerp(position, target.position, 2.0 * delta)
+	if (position - target.position).length() > 10:
+		position = lerp(position, target.position, 2.5 * delta)
 	
 	var max_angle = 270 * delta
 	var angle = target.rotation_degrees - rotation_degrees
