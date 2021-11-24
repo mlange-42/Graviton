@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures/player.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 24 )
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+cast_to = Vector2( -25, 0 )
+
+[node name="RayRight" type="RayCast2D" parent="."]
+cast_to = Vector2( 25, 0 )
+
+[node name="RayDown" type="RayCast2D" parent="."]
+position = Vector2( 0, 15 )
+cast_to = Vector2( 0, 20 )
+
+[node name="RayDownLeft" type="RayCast2D" parent="."]
+position = Vector2( -12, 15 )
+cast_to = Vector2( 0, 20 )
+
+[node name="RayDownRight" type="RayCast2D" parent="."]
+position = Vector2( 12, 15 )
+cast_to = Vector2( 0, 20 )
+
+[node name="Tween" type="Tween" parent="."]

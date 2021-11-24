@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square.png-731969bc97fe7edf62e045536bfbf3be.stex"
+path="res://.import/lethals.svg-ad35fd737b3516b792dc9841c382117a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Square.png"
-dest_files=[ "res://.import/Square.png-731969bc97fe7edf62e045536bfbf3be.stex" ]
+source_file="res://assets/tiles/lethals.svg"
+dest_files=[ "res://.import/lethals.svg-ad35fd737b3516b792dc9841c382117a.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
