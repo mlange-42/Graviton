@@ -9,6 +9,7 @@ var blur_amount = 0
 
 func _ready():
 	target = get_node(target_path)
+	target.connect("player_teleported", self, "_on_player_teleported")
 
 func _process(delta):
 	if (position - target.position).length() > 10:
@@ -31,6 +32,10 @@ func _process(delta):
 		blur.material.set_shader_param("blur_amount", blur_amount)
 		
 		self.rotation_degrees += angle
+
+func _on_player_teleported():
+	position = target.position
+	rotation = target.rotation
 
 func mod(a, n):
 	return a - floor(a/n) * n 

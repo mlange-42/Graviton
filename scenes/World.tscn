@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/tiles/floor_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tiles/lethals_tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://scripts/CameraController.gd" type="Script" id=4]
 [ext_resource path="res://shaders/blur.shader" type="Shader" id=5]
+[ext_resource path="res://scenes/objects/Exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/objects/Door.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ShaderMaterial" id=97]
 shader = ExtResource( 5 )
@@ -12,10 +14,12 @@ shader_param/blur_amount = 0.0
 
 [node name="World" type="Node2D"]
 
-[node name="TileMaps" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="."]
 scale = Vector2( 0.25, 0.25 )
 
-[node name="Lethals" type="TileMap" parent="TileMaps"]
+[node name="TileMaps" type="Node2D" parent="Level"]
+
+[node name="Lethals" type="TileMap" parent="Level/TileMaps"]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 256, 256 )
 centered_textures = true
@@ -25,11 +29,24 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Floor" type="TileMap" parent="TileMaps"]
+[node name="Floor" type="TileMap" parent="Level/TileMaps"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 256, 256 )
 format = 1
 tile_data = PoolIntArray( -262150, 1, 65541, -196609, 0, 196609, -262144, 0, 458754, -262143, 0, 196611, -262140, 0, 262152, -262139, 0, 11, -262136, 0, 262145, -262135, 0, 458754, -262134, 0, 3, -131080, 0, 262145, -131079, 0, 458754, -131078, 0, 262146, -131077, 0, 458754, -131076, 0, 262147, -131075, 1, 196614, -196604, 0, 196616, -196603, 0, 196619, -196600, 0, 65536, -196598, 0, 131072, -65544, 0, 65536, -65542, 0, 393216, -65540, 0, 131072, -65537, 0, 458753, -131072, 0, 458754, -131071, 0, 196611, -131064, 0, 65536, -8, 0, 327680, -65529, 3, 0, -65528, 0, 327680, -65526, 0, 262144, 65528, 0, 327680, 65530, 0, 262144, 65532, 0, 262144, 65535, 0, 458753, 0, 0, 458754, 1, 0, 458754, 2, 0, 458754, 3, 0, 196610, 4, 0, 196610, 5, 0, 458754, 6, 0, 196610, 7, 0, 196610, 8, 0, 393218, 9, 0, 196610, 10, 0, 131075, 131064, 0, 131073, 131065, 0, 458754, 131066, 0, 131074, 131067, 0, 196610, 131068, 0, 131075, 196600, 1, 65536, 196601, 1, 2, 196602, 1, 65537, 262142, 0, 262152, 262143, 0, 262154, 196608, 0, 262154, 196609, 0, 262154, 196610, 0, 262154, 196611, 0, 262154, 196612, 0, 10, 196613, 0, 10, 196614, 0, 10, 196615, 0, 10, 196616, 0, 262154, 196617, 0, 262154, 196618, 0, 10, 196619, 0, 10, 196620, 0, 11, 327678, 0, 196616, 327679, 0, 458761, 262144, 0, 196617, 262145, 0, 196617, 262146, 0, 196617, 262147, 0, 196617, 262148, 0, 196617, 262149, 0, 458761, 262150, 0, 458761, 262151, 0, 458761, 262152, 0, 196617, 262153, 0, 458761, 262154, 0, 196617, 262155, 0, 196617, 262156, 0, 196619 )
+
+[node name="Objects" type="Node2D" parent="Level"]
+
+[node name="Exit" parent="Level/Objects" instance=ExtResource( 6 )]
+position = Vector2( 896, -128 )
+
+[node name="Door" parent="Level/Objects" instance=ExtResource( 7 )]
+position = Vector2( 1408, -128 )
+other_door = NodePath("../Door2")
+
+[node name="Door2" parent="Level/Objects" instance=ExtResource( 7 )]
+position = Vector2( 1920, -128 )
+other_door = NodePath("../Door")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
@@ -38,11 +55,12 @@ script = ExtResource( 4 )
 target_path = NodePath("../Player")
 
 [node name="Blur" type="ColorRect" parent="Camera2D"]
+visible = false
 material = SubResource( 97 )
-margin_left = -1296.0
-margin_top = -900.0
-margin_right = 1304.0
-margin_bottom = 900.0
+margin_left = -1302.0
+margin_top = -905.0
+margin_right = 1298.0
+margin_bottom = 895.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
