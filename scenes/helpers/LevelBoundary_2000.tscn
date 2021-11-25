@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/helpers/LevelBoundary.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=98]
+extents = Vector2( 2000, 10 )
+
+[node name="LevelBoundary_2000" type="Area2D" groups=["Lethal"]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2000 )
+shape = SubResource( 98 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -2000 )
+shape = SubResource( 98 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( -2000, 0 )
+rotation = 1.5708
+shape = SubResource( 98 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2( 2000, 0 )
+rotation = 1.5708
+shape = SubResource( 98 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

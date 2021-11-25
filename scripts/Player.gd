@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+class_name Player
+
+signal player_teleported
+
 export (int) var speed = 240
 export (int) var jump_speed = -760
 export (int) var gravity = 2000
@@ -24,8 +28,13 @@ onready var ray_down_right: RayCast2D = $RayDownRight
 onready var tween: Tween = $Tween
 
 var velocity = Vector2.ZERO
+var areas: Dictionary  = {}
 
 func get_input():
+	
+	if Input.is_action_just_pressed("interact"):
+		interact()
+	
 	var dir = 0
 	if Input.is_action_pressed("right"):
 		dir += 1
@@ -74,7 +83,7 @@ func _physics_process(delta):
 	
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Lethals":
+		if collision.collider.is_in_group("Lethal"):
 			self.die()
 			return
 	
@@ -145,7 +154,19 @@ func check_rotation():
 func die():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene(get_tree().current_scene.filename)
+
+func teleport(target: Node2D):
+	self.global_position = target.global_position
+	self.global_rotation = target.global_rotation
 	
+	emit_signal("player_teleported")
+
+func interact():
+	if not areas.empty():
+		for key in areas.keys():
+			if key.has_method("interact"):
+				key.interact(self)
+
 func rotate_around_foot(angle):
 	var center = self.position + Vector2(0, 25).rotated(self.rotation)
 	self.position = center + (self.position - center).rotated(angle)
@@ -162,3 +183,14 @@ func _draw():
 		draw_line(ray_down.position, ray_down.position + ray_down.cast_to, Color.blue)
 		draw_line(ray_down_left.position, ray_down_left.position + ray_down_left.cast_to, Color.blue)
 		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
+
+func area_entered(area):
+	if area.is_in_group("Lethal"):
+		self.die()
+		return
+		
+	areas[area] = true
+	
+func area_exited(area):
+	areas.erase(area)
+	
