@@ -157,7 +157,7 @@ func die():
 
 func teleport(target: Node2D):
 	self.global_position = target.global_position
-	self.global_rotation = global_rotation
+	self.global_rotation = target.global_rotation
 	
 	emit_signal("player_teleported")
 

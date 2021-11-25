@@ -46,7 +46,8 @@ position = Vector2( 1408, -128 )
 other_door = NodePath("../Door2")
 
 [node name="Door2" parent="Level 25%/Objects" instance=ExtResource( 7 )]
-position = Vector2( 1920, -128 )
+position = Vector2( 1664, 384 )
+rotation = 3.14159
 other_door = NodePath("../Door")
 
 [node name="Camera2D" type="Camera2D" parent="."]
