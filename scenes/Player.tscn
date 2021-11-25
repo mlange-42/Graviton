@@ -10,7 +10,7 @@ extents = Vector2( 12, 24 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -6 )
 scale = Vector2( 0.25, 0.25 )
 frames = ExtResource( 1 )
 animation = "stand_right"
