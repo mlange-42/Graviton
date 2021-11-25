@@ -23,8 +23,7 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
-          cd $EXPORT_NAME
-          godot -v --export "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+          godot -v --export "Windows Desktop" build/windows/$EXPORT_NAME.exe
 
   export-linux:
     name: Linux Export
@@ -43,9 +42,7 @@ jobs:
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
-          ls
-          cd $EXPORT_NAME
-          godot -v --export "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
+          godot -v --export "Linux/X11" build/linux/$EXPORT_NAME.x86_64
 
   export-web:
     name: Web Export
@@ -64,8 +61,7 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          cd $EXPORT_NAME
-          godot -v --export "HTML5" ../build/web/index.html
+          godot -v --export "HTML5" build/web/index.html
 
   export-mac:
     name: Mac Export
@@ -84,5 +80,4 @@ jobs:
       - name: Mac Build
         run: |
           mkdir -v -p build/mac
-          cd $EXPORT_NAME
-          godot -v --export "Mac OSX" ../build/mac/$EXPORT_NAME.zip
+          godot -v --export "Mac OSX" build/mac/$EXPORT_NAME.zip
