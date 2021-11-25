@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Gravity2D"
+config/name="Graviton"
 run/main_scene="res://scenes/World.tscn"
 run/low_processor_mode=true
 config/icon="res://icon.png"
