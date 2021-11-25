@@ -3,7 +3,7 @@ on: push
 
 env:
   GODOT_VERSION: 3.4
-  EXPORT_NAME: graviton
+  EXPORT_NAME: Graviton
 
 jobs:
   export-windows:
@@ -43,6 +43,7 @@ jobs:
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
+          ls
           cd $EXPORT_NAME
           godot -v --export "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
 
