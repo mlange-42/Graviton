@@ -83,7 +83,7 @@ func _physics_process(delta):
 	
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name == "Lethals":
+		if collision.collider.is_in_group("Lethal"):
 			self.die()
 			return
 	
@@ -185,6 +185,10 @@ func _draw():
 		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
 
 func area_entered(area):
+	if area.is_in_group("Lethal"):
+		self.die()
+		return
+		
 	areas[area] = true
 	
 func area_exited(area):
