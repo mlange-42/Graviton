@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
-export (int) var jump_speed = -800
+export (int) var speed = 240
+export (int) var jump_speed = -760
 export (int) var gravity = 2000
 
 export (float, 0, 1.0) var friction = 0.25
@@ -81,7 +81,7 @@ func _physics_process(delta):
 	if abs(velocity.x) < min_speed:
 		velocity.x = 0
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_speed
 	
