@@ -192,5 +192,6 @@ func area_entered(area):
 	areas[area] = true
 	
 func area_exited(area):
+	# warning-ignore:return_value_discarded
 	areas.erase(area)
 	

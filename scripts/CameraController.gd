@@ -9,6 +9,7 @@ var blur_amount = 0
 
 func _ready():
 	target = get_node(target_path)
+	# warning-ignore:return_value_discarded
 	target.connect("player_teleported", self, "_on_player_teleported")
 
 func _process(delta):
