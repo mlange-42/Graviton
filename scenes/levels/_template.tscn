@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/tiles/floor_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,13 +6,16 @@
 [ext_resource path="res://scripts/CameraController.gd" type="Script" id=4]
 [ext_resource path="res://shaders/blur.shader" type="Shader" id=5]
 [ext_resource path="res://scenes/objects/Exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/helpers/LevelMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/helpers/LevelBoundary_2000.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/helpers/Level.gd" type="Script" id=9]
 
 [sub_resource type="ShaderMaterial" id=97]
 shader = ExtResource( 5 )
 shader_param/blur_amount = 0.0
 
 [node name="World" type="Node2D"]
+script = ExtResource( 9 )
 
 [node name="Level 25%" type="Node2D" parent="."]
 scale = Vector2( 0.25, 0.25 )
@@ -59,3 +62,5 @@ __meta__ = {
 position = Vector2( 32, -26 )
 
 [node name="LevelBoundary_2000" parent="." instance=ExtResource( 8 )]
+
+[node name="LevelMenuLayer" parent="." instance=ExtResource( 7 )]
