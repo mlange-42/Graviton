@@ -162,7 +162,3 @@ func _draw():
 		draw_line(ray_down.position, ray_down.position + ray_down.cast_to, Color.blue)
 		draw_line(ray_down_left.position, ray_down_left.position + ray_down_left.cast_to, Color.blue)
 		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
-	
-
-func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	print("Entered Area")
