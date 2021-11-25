@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_test.svg-778692c74fddb3e38d6923889e455694.stex"
+path="res://.import/jump.svg-d2963e98e876a7b8c5cb45262181e2b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/floor_test.svg"
-dest_files=[ "res://.import/floor_test.svg-778692c74fddb3e38d6923889e455694.stex" ]
+source_file="res://assets/sprites/player/jump.svg"
+dest_files=[ "res://.import/jump.svg-d2963e98e876a7b8c5cb45262181e2b2.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=1.0
+svg/scale=4.0
