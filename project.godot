@@ -10,16 +10,26 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Interactable",
+"class": "AbstractDoor",
+"language": "GDScript",
+"path": "res://scripts/objects/AbstractDoor.gd"
+}, {
+"base": "Area2D",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://scripts/objects/Collectable.gd"
+}, {
+"base": "AbstractDoor",
 "class": "Door",
 "language": "GDScript",
 "path": "res://scripts/objects/Door.gd"
 }, {
-"base": "Interactable",
+"base": "AbstractDoor",
 "class": "Entrance",
 "language": "GDScript",
 "path": "res://scripts/objects/Entrance.gd"
 }, {
-"base": "Interactable",
+"base": "AbstractDoor",
 "class": "Exit",
 "language": "GDScript",
 "path": "res://scripts/objects/Exit.gd"
@@ -28,6 +38,11 @@ _global_script_classes=[ {
 "class": "Interactable",
 "language": "GDScript",
 "path": "res://scripts/objects/Interactable.gd"
+}, {
+"base": "Collectable",
+"class": "Key",
+"language": "GDScript",
+"path": "res://scripts/objects/Key.gd"
 }, {
 "base": "Button",
 "class": "LevelButton",
@@ -50,10 +65,13 @@ _global_script_classes=[ {
 "path": "res://scripts/Player.gd"
 } ]
 _global_script_class_icons={
+"AbstractDoor": "",
+"Collectable": "",
 "Door": "",
 "Entrance": "",
 "Exit": "",
 "Interactable": "",
+"Key": "",
 "LevelButton": "",
 "LevelMenu": "",
 "Math": "",

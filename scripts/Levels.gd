@@ -8,7 +8,8 @@ var levels: Array = [
 	"Level_002",
 	"Level_003",
 	"Level_004",
-	"Level_005"
+	"Level_005",
+	"Level_006"
 ]
 
 func load_level(index) -> bool:
