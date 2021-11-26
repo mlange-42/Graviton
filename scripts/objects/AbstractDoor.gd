@@ -4,8 +4,13 @@ extends Interactable
 
 class_name AbstractDoor
 
+const sound_locked = "res://assets/sounds/door_locked.mp3"
+const sound_open = "res://assets/sounds/door_open.mp3"
+
 export (bool) var locked = false
 export (String) var key = null
+
+onready var audio: AudioStreamPlayer2D = $Audio
 
 func interact(player: Player):
 	if locked:
@@ -20,7 +25,15 @@ func interact(player: Player):
 		interact_unlocked(player)
 
 func interact_locked(_player: Player):
-	pass
+	play_sound(sound_locked)
 
 func interact_unlocked(_player: Player):
-	pass
+	if not audio.is_playing():
+		play_sound(sound_open)
+
+func play_sound(sound):
+	var stream = load(sound)
+	stream.set_loop(false)
+	audio.stream = stream
+	audio.play()
+	

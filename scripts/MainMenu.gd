@@ -16,13 +16,12 @@ func _ready():
 		b.connect("pressed", self, "_on_level_button_pressed", [b])
 		
 		levels_container.add_child(b)
+	
+	get_tree().paused = false
 
 func _on_level_button_pressed(button: LevelButton):
-	var level = button.level
-	var scene = Levels.levels[level] + ".tscn"
-	
-	if get_tree().change_scene("scenes/levels/"+scene) == OK:
-		Levels.current_level = level
+	# warning-ignore:return_value_discarded
+	Levels.load_level(button.level)
 
 func _on_exit_button_pressed():
 	get_tree().quit()

@@ -18,5 +18,13 @@ region_rect = Rect2( 0, 0, 296, 296 )
 position = Vector2( 0, 24 )
 shape = SubResource( 98 )
 
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+pause_mode = 2
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

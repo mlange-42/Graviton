@@ -8,6 +8,8 @@ extents = Vector2( 64, 120 )
 
 [node name="Door" type="Area2D"]
 script = ExtResource( 2 )
+key = null
+other_door = null
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -17,6 +19,8 @@ region_rect = Rect2( 0, 0, 296, 296 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 24 )
 shape = SubResource( 98 )
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
