@@ -10,16 +10,21 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Interactable",
+"class": "AbstractDoor",
+"language": "GDScript",
+"path": "res://scripts/objects/AbstractDoor.gd"
+}, {
+"base": "AbstractDoor",
 "class": "Door",
 "language": "GDScript",
 "path": "res://scripts/objects/Door.gd"
 }, {
-"base": "Interactable",
+"base": "AbstractDoor",
 "class": "Entrance",
 "language": "GDScript",
 "path": "res://scripts/objects/Entrance.gd"
 }, {
-"base": "Interactable",
+"base": "AbstractDoor",
 "class": "Exit",
 "language": "GDScript",
 "path": "res://scripts/objects/Exit.gd"
@@ -50,6 +55,7 @@ _global_script_classes=[ {
 "path": "res://scripts/Player.gd"
 } ]
 _global_script_class_icons={
+"AbstractDoor": "",
 "Door": "",
 "Entrance": "",
 "Exit": "",

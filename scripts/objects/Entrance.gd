@@ -1,8 +1,8 @@
-extends Interactable
+extends AbstractDoor
 
 class_name Entrance
 
-func interact(player):
+func interact_unlocked(player):
 	if abs(Math.angle_deg_between(self.global_rotation_degrees, player.global_rotation_degrees)) >= 0.01:
 		return
 		
