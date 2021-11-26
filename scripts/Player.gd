@@ -29,6 +29,7 @@ onready var tween: Tween = $Tween
 
 var velocity = Vector2.ZERO
 var areas: Dictionary  = {}
+var items: Dictionary  = {}
 
 func get_input():
 	
@@ -151,6 +152,13 @@ func check_rotation():
 	# warning-ignore:return_value_discarded
 	tween.start()
 
+func rotate_around_foot(angle):
+	var center = self.position + Vector2(0, 25).rotated(self.rotation)
+	self.position = center + (self.position - center).rotated(angle)
+	self.rotate(angle)
+
+
+
 func die():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene(get_tree().current_scene.filename)
@@ -167,10 +175,22 @@ func interact():
 			if key.has_method("interact"):
 				key.interact(self)
 
-func rotate_around_foot(angle):
-	var center = self.position + Vector2(0, 25).rotated(self.rotation)
-	self.position = center + (self.position - center).rotated(angle)
-	self.rotate(angle)
+func collect_item(item: Collectable):
+	item.collected()
+	self.items[item] = true
+	
+func area_entered(area):
+	if area.is_in_group("Lethal"):
+		self.die()
+		return
+		
+	areas[area] = true
+	
+func area_exited(area):
+	# warning-ignore:return_value_discarded
+	areas.erase(area)
+
+
 
 func _draw():
 	if debug_draw:
@@ -183,15 +203,3 @@ func _draw():
 		draw_line(ray_down.position, ray_down.position + ray_down.cast_to, Color.blue)
 		draw_line(ray_down_left.position, ray_down_left.position + ray_down_left.cast_to, Color.blue)
 		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
-
-func area_entered(area):
-	if area.is_in_group("Lethal"):
-		self.die()
-		return
-		
-	areas[area] = true
-	
-func area_exited(area):
-	# warning-ignore:return_value_discarded
-	areas.erase(area)
-	
