@@ -4,8 +4,6 @@ class_name Player
 
 signal player_teleported
 
-const sound_walk = "res://assets/sounds/walk.mp3"
-
 export (int) var speed = 240
 export (int) var jump_speed = -760
 export (int) var gravity = 2000
@@ -26,13 +24,19 @@ onready var ray_right: RayCast2D = $RayRight
 onready var ray_down: RayCast2D = $RayDown
 onready var ray_down_left: RayCast2D = $RayDownLeft
 onready var ray_down_right: RayCast2D = $RayDownRight
-onready var audio: AudioStreamPlayer2D = $Audio
+onready var audio_walk: AudioStreamPlayer2D = $WalkAudio
+onready var audio_jump: AudioStreamPlayer2D = $JumpAudio
 
 onready var tween: Tween = $Tween
 
+var was_on_floor = false
 var velocity = Vector2.ZERO
 var areas: Dictionary  = {}
 var items: Dictionary  = {}
+
+func _ready():
+	was_on_floor = true
+	audio_jump.stream.set_loop(false)
 
 func get_input():
 	
@@ -54,8 +58,9 @@ func get_input():
 
 func _process(_delta):
 	var walk = false
+	var on_floor = self.is_on_floor()
 		
-	if self.is_on_floor():
+	if on_floor:
 		
 		if velocity.x < -speed/4:
 			sprite.animation = "walk_left"
@@ -79,14 +84,16 @@ func _process(_delta):
 			elif sprite.animation == "stand_right":
 				sprite.animation = "jump_right"
 	
+	if on_floor and not was_on_floor:
+		audio_jump.play()
+		
+	was_on_floor = on_floor
+	
 	if walk or tween.is_active():
-		if not audio.is_playing():
-			var stream = load(sound_walk)
-			stream.set_loop(true)
-			audio.stream = stream
-			audio.play()
+		if not audio_walk.is_playing():
+			audio_walk.play()
 	else:
-		audio.stop()
+		audio_walk.stop()
 	
 func _physics_process(delta):
 	if tween.is_active():
@@ -159,7 +166,7 @@ func check_rotation():
 		return
 	
 	var angle = PI * 0.5 * sign(velocity.x)
-	var center = self.position + Vector2(0, 25).rotated(self.rotation)
+	var center = self.position + Vector2(0, 25).rotated(self.rotation) + Vector2(-4 * sign(velocity.x), 0).rotated(self.rotation)
 	
 	# warning-ignore:return_value_discarded
 	tween.interpolate_property(self, "rotation", self.rotation, self.rotation + angle, rotation_time)
@@ -167,12 +174,6 @@ func check_rotation():
 	tween.interpolate_property(self, "position", self.position, center + (self.position - center).rotated(angle), rotation_time)
 	# warning-ignore:return_value_discarded
 	tween.start()
-
-func rotate_around_foot(angle):
-	var center = self.position + Vector2(0, 25).rotated(self.rotation)
-	self.position = center + (self.position - center).rotated(angle)
-	self.rotate(angle)
-
 
 
 func die():

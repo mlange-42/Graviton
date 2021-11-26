@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/player/player_animations.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/walk.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/jump.mp3" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 24 )
@@ -40,5 +41,9 @@ cast_to = Vector2( 0, 20 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+[node name="WalkAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0

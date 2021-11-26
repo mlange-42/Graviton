@@ -30,7 +30,6 @@ func _process(delta):
 		blur_amount = lerp(blur_amount, target_blur, value)
 		
 		blur.material.set_shader_param("blur_amount", blur_amount)
-		
 		self.rotation_degrees += angle
 
 func _on_player_teleported():
