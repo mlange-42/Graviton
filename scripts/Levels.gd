@@ -1,5 +1,6 @@
 extends Node
 
+var player_level: int = 0
 var current_level: int = 0
 var go_back: bool = false
 
@@ -18,6 +19,9 @@ func load_level(index) -> bool:
 		var scene = levels[index] + ".tscn"
 		if get_tree().change_scene("scenes/levels/"+scene) == OK:
 			current_level = index
+			if player_level < current_level:
+				player_level = current_level
+				
 			return true
 	
 	return false

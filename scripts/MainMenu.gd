@@ -10,6 +10,9 @@ func _ready():
 		b.rect_min_size = Vector2(60, 60)
 		b.text = str(i + 1)
 		
+		if i > Levels.player_level:
+			b.disabled = true
+		
 		b.connect("pressed", self, "_on_level_button_pressed", [b])
 		
 		levels_container.add_child(b)
