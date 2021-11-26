@@ -17,9 +17,8 @@ func _process(delta):
 		position = lerp(position, target.position, 2.5 * delta)
 	
 	var max_angle = 270 * delta
-	var angle = target.rotation_degrees - rotation_degrees
+	var angle = Math.angle_deg_between(rotation_degrees, target.rotation_degrees)
 	
-	angle = mod(angle + 180, 360) - 180
 	angle = min(angle, max_angle) if angle > 0 else max(angle, -max_angle)
 	
 	if angle == 0:
@@ -37,6 +36,3 @@ func _process(delta):
 func _on_player_teleported():
 	position = target.position
 	rotation = target.rotation
-
-func mod(a, n):
-	return a - floor(a/n) * n 
