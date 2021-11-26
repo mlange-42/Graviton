@@ -162,7 +162,7 @@ func teleport(target: Node2D):
 	emit_signal("player_teleported")
 
 func interact():
-	if not areas.empty():
+	if self.is_on_floor() and not areas.empty():
 		for key in areas.keys():
 			if key.has_method("interact"):
 				key.interact(self)
