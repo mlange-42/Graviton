@@ -37,6 +37,7 @@ var items: Dictionary  = {}
 func _ready():
 	was_on_floor = true
 	audio_jump.stream.set_loop(false)
+	$DeathAudio.stream.set_loop(false)
 
 func get_input():
 	
@@ -177,8 +178,10 @@ func check_rotation():
 
 
 func die():
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene(get_tree().current_scene.filename)
+	get_tree().paused = true
+	$DeathAudio.play()
+	sprite.animation = "die"
+	
 
 func teleport(target: Node2D):
 	self.global_position = target.global_position
@@ -220,3 +223,10 @@ func _draw():
 		draw_line(ray_down.position, ray_down.position + ray_down.cast_to, Color.blue)
 		draw_line(ray_down_left.position, ray_down_left.position + ray_down_left.cast_to, Color.blue)
 		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
+
+
+func _on_animation_finished():
+	if sprite.animation == "die":
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene(get_tree().current_scene.filename)
+		get_tree().paused = false

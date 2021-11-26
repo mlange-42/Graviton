@@ -42,6 +42,7 @@ format = 1
 position = Vector2( 896, -128 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 rotating = true
 current = true
 script = ExtResource( 4 )
