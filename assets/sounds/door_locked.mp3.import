@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/door_locked.mp3-6f71e53454bc0d7f4e31881fdc93ef7b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/door_locked.mp3"
+dest_files=[ "res://.import/door_locked.mp3-6f71e53454bc0d7f4e31881fdc93ef7b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

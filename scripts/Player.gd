@@ -24,12 +24,20 @@ onready var ray_right: RayCast2D = $RayRight
 onready var ray_down: RayCast2D = $RayDown
 onready var ray_down_left: RayCast2D = $RayDownLeft
 onready var ray_down_right: RayCast2D = $RayDownRight
+onready var audio_walk: AudioStreamPlayer2D = $WalkAudio
+onready var audio_jump: AudioStreamPlayer2D = $JumpAudio
 
 onready var tween: Tween = $Tween
 
+var was_on_floor = false
 var velocity = Vector2.ZERO
 var areas: Dictionary  = {}
 var items: Dictionary  = {}
+
+func _ready():
+	was_on_floor = true
+	audio_jump.stream.set_loop(false)
+	$DeathAudio.stream.set_loop(false)
 
 func get_input():
 	
@@ -50,12 +58,17 @@ func get_input():
 		velocity.x = lerp(velocity.x, 0, fac * friction)
 
 func _process(_delta):
-	
-	if self.is_on_floor():
+	var walk = false
+	var on_floor = self.is_on_floor()
+		
+	if on_floor:
+		
 		if velocity.x < -speed/4:
 			sprite.animation = "walk_left"
+			walk = true
 		elif velocity.x > speed/4:
 			sprite.animation = "walk_right"
+			walk = true
 		else:
 			if sprite.animation == "walk_left" or sprite.animation == "jump_left":
 				sprite.animation = "stand_left"
@@ -71,7 +84,18 @@ func _process(_delta):
 				sprite.animation = "jump_left"
 			elif sprite.animation == "stand_right":
 				sprite.animation = "jump_right"
-
+	
+	if on_floor and not was_on_floor:
+		audio_jump.play()
+		
+	was_on_floor = on_floor
+	
+	if walk or tween.is_active():
+		if not audio_walk.is_playing():
+			audio_walk.play()
+	else:
+		audio_walk.stop()
+	
 func _physics_process(delta):
 	if tween.is_active():
 		return
@@ -143,7 +167,7 @@ func check_rotation():
 		return
 	
 	var angle = PI * 0.5 * sign(velocity.x)
-	var center = self.position + Vector2(0, 25).rotated(self.rotation)
+	var center = self.position + Vector2(0, 25).rotated(self.rotation) + Vector2(-4 * sign(velocity.x), 0).rotated(self.rotation)
 	
 	# warning-ignore:return_value_discarded
 	tween.interpolate_property(self, "rotation", self.rotation, self.rotation + angle, rotation_time)
@@ -152,16 +176,12 @@ func check_rotation():
 	# warning-ignore:return_value_discarded
 	tween.start()
 
-func rotate_around_foot(angle):
-	var center = self.position + Vector2(0, 25).rotated(self.rotation)
-	self.position = center + (self.position - center).rotated(angle)
-	self.rotate(angle)
-
-
 
 func die():
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene(get_tree().current_scene.filename)
+	get_tree().paused = true
+	$DeathAudio.play()
+	sprite.animation = "die"
+	
 
 func teleport(target: Node2D):
 	self.global_position = target.global_position
@@ -203,3 +223,10 @@ func _draw():
 		draw_line(ray_down.position, ray_down.position + ray_down.cast_to, Color.blue)
 		draw_line(ray_down_left.position, ray_down_left.position + ray_down_left.cast_to, Color.blue)
 		draw_line(ray_down_right.position, ray_down_right.position + ray_down_right.cast_to, Color.blue)
+
+
+func _on_animation_finished():
+	if sprite.animation == "die":
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene(get_tree().current_scene.filename)
+		get_tree().paused = false

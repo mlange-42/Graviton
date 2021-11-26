@@ -7,6 +7,8 @@ func _ready():
 	if Levels.go_back:
 		var exit = $Level/Objects/Exit
 		player.teleport(exit)
+	
+	get_tree().paused = false
 
 func _input(event):
 	if event.is_action_pressed("menu"):

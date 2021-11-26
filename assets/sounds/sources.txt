@@ -1,0 +1,6 @@
+
+door_locked: https://freesound.org/people/BenjaminNelan/sounds/321087/
+door_open: https://freesound.org/people/skyumori/sounds/104526/
+
+jump: https://freesound.org/people/zepurple/sounds/540272/
+pop: https://freesound.org/people/greenvwbeetle/sounds/244657/
