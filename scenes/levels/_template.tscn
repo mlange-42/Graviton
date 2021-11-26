@@ -17,12 +17,12 @@ shader_param/blur_amount = 0.0
 [node name="World" type="Node2D"]
 script = ExtResource( 9 )
 
-[node name="Level 25%" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="."]
 scale = Vector2( 0.25, 0.25 )
 
-[node name="TileMaps" type="Node2D" parent="Level 25%"]
+[node name="TileMaps" type="Node2D" parent="Level"]
 
-[node name="Lethals" type="TileMap" parent="Level 25%/TileMaps" groups=["Lethal"]]
+[node name="Lethals" type="TileMap" parent="Level/TileMaps" groups=["Lethal"]]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 256, 256 )
 centered_textures = true
@@ -31,14 +31,14 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Floor" type="TileMap" parent="Level 25%/TileMaps"]
+[node name="Floor" type="TileMap" parent="Level/TileMaps"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 256, 256 )
 format = 1
 
-[node name="Objects" type="Node2D" parent="Level 25%"]
+[node name="Objects" type="Node2D" parent="Level"]
 
-[node name="Exit" parent="Level 25%/Objects" instance=ExtResource( 6 )]
+[node name="Exit" parent="Level/Objects" instance=ExtResource( 6 )]
 position = Vector2( 896, -128 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
