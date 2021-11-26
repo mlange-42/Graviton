@@ -9,35 +9,10 @@ flags = 5
 atlas = ExtResource( 3 )
 region = Rect2( 256, 0, 256, 256 )
 
-[sub_resource type="AtlasTexture" id=9]
-flags = 5
-atlas = ExtResource( 2 )
-region = Rect2( 0, 256, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 5
-atlas = ExtResource( 2 )
-region = Rect2( 256, 256, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 5
-atlas = ExtResource( 2 )
-region = Rect2( 512, 256, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 5
-atlas = ExtResource( 2 )
-region = Rect2( 768, 256, 256, 256 )
-
 [sub_resource type="AtlasTexture" id=14]
 flags = 5
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 256, 256 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 5
-atlas = ExtResource( 1 )
-region = Rect2( 256, 0, 256, 256 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 5
@@ -64,6 +39,31 @@ flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 256, 256 )
 
+[sub_resource type="AtlasTexture" id=9]
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 0, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 256, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 512, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 5
+atlas = ExtResource( 2 )
+region = Rect2( 768, 256, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 5
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 256, 256 )
+
 [resource]
 animations = [ {
 "frames": [ SubResource( 13 ) ],
@@ -71,28 +71,28 @@ animations = [ {
 "name": "jump_right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 14 ) ],
 "loop": true,
 "name": "jump_left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ) ],
-"loop": true,
-"name": "stand_right",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "walk_left",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "stand_left",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "stand_right",
 "speed": 5.0
 } ]

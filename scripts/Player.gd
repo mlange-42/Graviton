@@ -4,6 +4,8 @@ class_name Player
 
 signal player_teleported
 
+const sound_walk = "res://assets/sounds/walk.mp3"
+
 export (int) var speed = 240
 export (int) var jump_speed = -760
 export (int) var gravity = 2000
@@ -24,6 +26,7 @@ onready var ray_right: RayCast2D = $RayRight
 onready var ray_down: RayCast2D = $RayDown
 onready var ray_down_left: RayCast2D = $RayDownLeft
 onready var ray_down_right: RayCast2D = $RayDownRight
+onready var audio: AudioStreamPlayer2D = $Audio
 
 onready var tween: Tween = $Tween
 
@@ -50,12 +53,16 @@ func get_input():
 		velocity.x = lerp(velocity.x, 0, fac * friction)
 
 func _process(_delta):
-	
+	var walk = false
+		
 	if self.is_on_floor():
+		
 		if velocity.x < -speed/4:
 			sprite.animation = "walk_left"
+			walk = true
 		elif velocity.x > speed/4:
 			sprite.animation = "walk_right"
+			walk = true
 		else:
 			if sprite.animation == "walk_left" or sprite.animation == "jump_left":
 				sprite.animation = "stand_left"
@@ -71,7 +78,16 @@ func _process(_delta):
 				sprite.animation = "jump_left"
 			elif sprite.animation == "stand_right":
 				sprite.animation = "jump_right"
-
+	
+	if walk or tween.is_active():
+		if not audio.is_playing():
+			var stream = load(sound_walk)
+			stream.set_loop(true)
+			audio.stream = stream
+			audio.play()
+	else:
+		audio.stop()
+	
 func _physics_process(delta):
 	if tween.is_active():
 		return
