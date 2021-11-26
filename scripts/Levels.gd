@@ -6,7 +6,9 @@ var go_back: bool = false
 var levels: Array = [
 	"Level_001",
 	"Level_002",
-	"Level_003"
+	"Level_003",
+	"Level_004",
+	"Level_005"
 ]
 
 func load_level(index) -> bool:
