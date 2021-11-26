@@ -22,7 +22,4 @@ position = Vector2( -32, -24 )
 [node name="Player" parent="World" index="2"]
 position = Vector2( -32, -24 )
 
-[node name="LevelBoundary_2000" parent="World" index="3"]
-position = Vector2( -32, -40 )
-
 [editable path="World"]
