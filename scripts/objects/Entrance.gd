@@ -9,9 +9,6 @@ func _ready():
 func interact_unlocked(player):
 	.interact_unlocked(player)
 	
-	if abs(Math.angle_deg_between(self.global_rotation_degrees, player.global_rotation_degrees)) >= 0.01:
-		return
-	
 	get_tree().paused = true
 	$Timer.start()
 

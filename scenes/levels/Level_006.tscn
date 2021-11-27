@@ -32,4 +32,8 @@ position = Vector2( -32, -24 )
 [node name="Player" parent="World" index="2"]
 position = Vector2( -32, -24 )
 
+[node name="Background" parent="World" index="5"]
+position = Vector2( 40, 40 )
+scale = Vector2( 400, 400 )
+
 [editable path="World"]

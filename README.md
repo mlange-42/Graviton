@@ -6,7 +6,7 @@ A 2D puzzle platformer featuring unique gravity mechanics. Solve puzzles walking
 
 **[Play Graviton online](https://mlange-42.github.io/Graviton/)**
 
-<img width="600" height="400" src="https://user-images.githubusercontent.com/44003176/143660928-012e06ec-d49b-4348-9064-72c7677e12ba.png">
+<img width="600" height="400" src="https://user-images.githubusercontent.com/44003176/143663902-2cb88dcb-2a49-44b2-9079-179be7581a45.png">
   
 ⚠️ This project is still in a very early state of development. But it is already playable! 🚀
 

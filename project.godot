@@ -165,6 +165,6 @@ common/enable_pause_aware_picking=true
 
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.494118, 0.196078, 0.196078, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

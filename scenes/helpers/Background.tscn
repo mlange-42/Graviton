@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/textures/white_pixel.svg" type="Texture" id=1]
+
+[node name="Background" type="Sprite"]
+self_modulate = Color( 0.494118, 0.196078, 0.196078, 1 )
+scale = Vector2( 100, 100 )
+z_index = -1000
+texture = ExtResource( 1 )

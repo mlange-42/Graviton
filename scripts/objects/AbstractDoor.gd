@@ -13,6 +13,9 @@ export (String) var key = null
 onready var audio: AudioStreamPlayer2D = $Audio
 
 func interact(player: Player):
+	if abs(Math.angle_deg_between(self.global_rotation_degrees, player.global_rotation_degrees)) > 0.01:
+		return
+		
 	if locked:
 		for item in player.items:
 			if item.has_method("get_key") and item.get_key() == self.key:
