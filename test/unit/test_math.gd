@@ -13,4 +13,3 @@ func test_angle_deg_between():
 	assert_eq(Math.angle_deg_between(1, 180), 179.0)
 	assert_eq(Math.angle_deg_between(180, 1), -179.0)
 	
-	assert_eq(1, 0)
