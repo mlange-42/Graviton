@@ -1,6 +1,7 @@
 # Graviton
 
-[![Test status](https://github.com/mlange-42/Graviton/actions/workflows/build.yml/badge.svg)](https://github.com/mlange-42/Graviton/actions/workflows/build.yml)
+[![Test status](https://github.com/mlange-42/Graviton/actions/workflows/test.yml/badge.svg)](https://github.com/mlange-42/Graviton/actions/workflows/test.yml)
+[![Build status](https://github.com/mlange-42/Graviton/actions/workflows/build.yml/badge.svg)](https://github.com/mlange-42/Graviton/actions/workflows/build.yml)
 
 A 2D puzzle platformer featuring unique gravity mechanics. Solve puzzles walking on walls and ceilings!
 
