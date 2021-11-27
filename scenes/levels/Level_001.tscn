@@ -16,12 +16,12 @@ bbcode_text = "Move with [u]<- / ->[/u] or [u]A / D[/u].
 
 		Jump with [u]SPACE[/u]
 
-			Interact  with [u]UP[/u] or [u]W[/u]"
+			Interact with [u]UP[/u] or [u]W[/u]"
 text = "Move with <- / -> or A / D.
 
 		Jump with SPACE
 
-			Interact  with UP or W"
+			Interact with UP or W"
 __meta__ = {
 "_edit_use_anchors_": false
 }
