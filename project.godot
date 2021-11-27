@@ -99,6 +99,10 @@ settings/stdout/verbose_stdout=true
 window/size/width=1280
 window/size/height=680
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+
 [global]
 
 image=false
