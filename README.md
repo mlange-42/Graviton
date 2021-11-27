@@ -1,5 +1,8 @@
 # Graviton
 
+[![Test status](https://github.com/mlange-42/Graviton/actions/workflows/build.yml/badge.svg)](https://github.com/mlange-42/Graviton/actions/workflows/build.yml)
+[![GPL3 license](https://img.shields.io/github/license/mlange-42/Graviton)](https://github.com/mlange-42/Graviton/blob/main/LICENSE)
+
 A 2D puzzle platformer featuring unique gravity mechanics. Solve puzzles walking on walls and ceilings!
 
 **[Play Graviton online](https://mlange-42.github.io/Graviton/)**
@@ -22,6 +25,8 @@ Desktop versions for Linux, Windows and MacOS can be found under [Releases](http
 * Don't stick by holding `SHIFT`
 
 ## Development
+
+This project tries to rely exclusively on Open Source software:
 
 * Developed using the [Godot](https://godotengine.org) game engine (see [Godot license](https://godotengine.org/license)).
 * Artwork made with [Inkscape](https://inkscape.org/) and [GIMP](https://gimp.org)

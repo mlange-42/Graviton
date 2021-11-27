@@ -1,4 +1,4 @@
-name: "godot-publish"
+name: "publish"
 
 on:
   push:
@@ -11,7 +11,7 @@ env:
 
 jobs:
   export-web:
-    name: Web Export
+    name: Web Export + Publish
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:3.4
