@@ -13,17 +13,33 @@
 			padding: 0;
 			text-align: center;
 			background-color: black;
+            font-family: Arial;
 		}
 
 		#canvas {
 			display: block;
-			margin: 0;
+			margin: 10px auto auto auto;
 			color: white;
 		}
 
 		#canvas:focus {
 			outline: none;
 		}
+        
+        #links {
+            color: white;
+            background-color: black;
+            position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+            padding: 3px;
+        }
+        
+        #links a {
+            color: white;
+            text-decoration: none;
+        }
 
 		.godot {
 			font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
@@ -111,12 +127,13 @@
 			visibility: visible;
 		}
 	</style>
-<link id='-gd-engine-icon' rel='icon' type='image/png' href='index.icon.png' />
-<link rel='apple-touch-icon' href='index.apple-touch-icon.png'/>
+<link id='-gd-engine-icon' rel='icon' type='image/png' href='Graviton.icon.png' />
+<link rel='apple-touch-icon' href='Graviton.apple-touch-icon.png'/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-	<canvas id='canvas'>
+	<canvas id='canvas' tabindex="1", onclick="focus()">
 		HTML5 canvas appears to be unsupported in the current browser.<br />
 		Please try updating or use a different browser.
 	</canvas>
@@ -134,11 +151,15 @@
 		</div>
 		<div id='status-notice' class='godot' style='display: none;'></div>
 	</div>
+    
+    <div id='links'>
+        Graviton | Source code: <a href="https://github.com/mlange-42/Graviton"><i class="fa fa-github"></i> GitHub</a>
+    <div>
 
-	<script type='text/javascript' src='index.js'></script>
+	<script type='text/javascript' src='Graviton.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":431920,"index.wasm":13328615},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":1,"executable":"Graviton","experimentalVK":false,"fileSizes":{"Graviton.pck":394320,"Graviton.wasm":17472981},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
@@ -244,4 +265,5 @@
 	//]]></script>
 </body>
 </html>
+
 
