@@ -1,8 +1,5 @@
 class_name Math
 
-static func angle_deg_between(from, to) -> float:
+static func angle_deg_between(from: float, to: float) -> float:
 	var angle = to - from
-	return mod(angle + 180, 360) - 180
-
-static func mod(a, n):
-	return a - floor(a/n) * n 
+	return fposmod(angle + 180.0, 360.0) - 180.0
