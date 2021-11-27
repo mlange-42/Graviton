@@ -97,8 +97,7 @@ settings/stdout/verbose_stdout=true
 [display]
 
 window/size/width=1280
-window/size/height=720
-window/stretch/aspect="keep"
+window/size/height=680
 
 [global]
 

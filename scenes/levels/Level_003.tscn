@@ -22,4 +22,7 @@ position = Vector2( -32, -24 )
 [node name="Player" parent="World" index="2"]
 position = Vector2( -32, -24 )
 
+[node name="Background" parent="World" index="5"]
+self_modulate = Color( 0.494118, 0.196078, 0.196078, 1 )
+
 [editable path="World"]

@@ -9,8 +9,8 @@
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = -80.0
 margin_top = -168.0
-margin_right = 16.0
-margin_bottom = -128.0
+margin_right = 40.0
+margin_bottom = -112.0
 custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "Don't stick with [u]SHIFT[/u]"
@@ -39,5 +39,8 @@ position = Vector2( -32, -24 )
 
 [node name="Player" parent="World" index="2"]
 position = Vector2( -32, -24 )
+
+[node name="Background" parent="World" index="5"]
+position = Vector2( 2112, 2096 )
 
 [editable path="World"]
